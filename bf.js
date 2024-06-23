@@ -11,16 +11,6 @@ let b_stack = [];
 
 let output = "";
 
-/*
-for(i = 0; i < program.length; i++) {
-    if(program[ip] == '[') {
-        brackets.push([ip, 0]);
-    } else if(program[ip] = ']') {
-        brackets.push(brackets)
-    }
-}
-*/
-
 function submit(e) {
     program = document.getElementById("code").value;
     data.fill(0);
@@ -30,8 +20,8 @@ function submit(e) {
     interpret();
     document.getElementById("out").textContent = "Output: " + output;
 }
-
-function interpret() {
+    
+async function interpret() {
     for(ip = 0; ip < program.length; ip++) {
         switch(program[ip]) {
             case '<':
@@ -51,7 +41,7 @@ function interpret() {
                 output += String.fromCharCode(data[dp]);
                 break;        
             case ',':
-                console.assert(false, "todo");
+                alert("NOT IMPLEMENTED: ,");
                 break;        
             case '[':
                 f_stack.push(ip);
@@ -77,6 +67,8 @@ function interpret() {
                     if(f_stack.length > 0) f_stack.pop();
                 }           
                 break;        
+            default:
+                continue;
         }
     }
 }    
